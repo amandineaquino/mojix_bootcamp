@@ -74,6 +74,11 @@ if (inv_soh and inv_rfid):
             
             st.download_button(
                 "Download details of discrepancies",
+                convert_df(df_only_discrepancies[expected_columns]),
+                "discrenpancies_details.csv",
+                mime='text/csv')
+            st.download_button(
+                "Download details of discrepancies with filters applied",
                 convert_df(final_df[expected_columns]),
                 "discrenpancies_details.csv",
                 mime='text/csv')
