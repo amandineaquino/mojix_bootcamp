@@ -68,6 +68,15 @@ if (inv_soh and inv_rfid):
             
             final_df = new_df[expected_columns].reset_index()
             st.dataframe(final_df[expected_columns])
+            
+            def convert_df(df):
+                return df.to_csv().encode('utf-8')
+            
+            st.download_button(
+                "Download details of discrepancies",
+                convert_df(final_df[expected_columns]),
+                "discrenpancies_details.csv",
+                mime='text/csv')
 
         with rfid_details:
             st.subheader("Distribution by zone")
